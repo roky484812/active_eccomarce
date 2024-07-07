@@ -127,6 +127,9 @@ class CheckoutController extends Controller
     {
         // if guest checkout, create user
         // return ['user'=> auth()->user()];
+        $request->validate([
+            'delivery' => 'required|in:70,130',
+        ]);
         if(auth()->user() == null){
             $guest_user = $this->createUser($request->except('_token', 'payment_option'));
             // $guest_user = 1;
