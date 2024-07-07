@@ -1,17 +1,13 @@
-/bootstrap/compiled.php
 .env.*.php
 .env.php
 /app/Exceptions
 /node_modules
-/public/assets
 /public/storage
 /public/uploads
 /storage/*.key
 /storage/debugbar
-/vendor
 /temp
 /.idea
-/.vscode
 /.vagrant
 Homestead.json
 Homestead.yaml
@@ -21,9 +17,6 @@ yarn-error.log
 .idea/
 
 updates/
-composer.lock
-*.lock
-resources/lang/en.json
 .env
 updates.zip
 ecommerce.zip

@@ -151,10 +151,12 @@ class CartController extends Controller
             $carts = Cart::where('temp_user_id', $temp_user_id)->get();
         }
 
+        // this modal_view was on the returned array
+        // 'modal_view' => view('frontend.partials.cart.addedToCart', compact('product', 'cart'))->render(),
         return array(
             'status' => 1,
             'cart_count' => count($carts),
-            'modal_view' => view('frontend.partials.cart.addedToCart', compact('product', 'cart'))->render(),
+            'modal_view' => view('frontend.partials.cart.createdAddedToCart', compact('product', 'cart', 'carts'))->render(),
             'nav_cart_view' => view('frontend.partials.cart.cart')->render(),
         );
     }
