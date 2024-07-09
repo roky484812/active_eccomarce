@@ -1,7 +1,7 @@
 <div class="bg-white border mb-4">
     <div class="p-3 p-sm-4">
         <h3 class="fs-16 fw-700 mb-0">
-            <span class="mr-4">{{ translate('Reviews & Ratings') }}</span>
+            {{-- <span class="mr-4">{{ translate('Reviews & Ratings') }}</span> --}}
         </h3>
     </div>
     <!-- Ratting -->
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 text-right">
-                    <a  href="javascript:void(0);" onclick="product_review('{{ $detailedProduct->id }}')" 
+                    <a  href="javascript:void(0);" onclick="product_review('{{ $detailedProduct->id }}')"
                         class="btn btn-secondary-base fw-400 rounded-0 text-white">
                         <span class="d-md-inline-block"> {{ translate('Rate this Product') }}</span>
                     </a>

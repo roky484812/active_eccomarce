@@ -57,7 +57,7 @@
                 </a>
             </div>
         @endif
-        <div class="col mb-3">
+        {{-- <div class="col mb-3">
             @if ($detailedProduct->auction_product != 1)
                 <div class="d-flex">
                     <!-- Add to wishlist button -->
@@ -74,7 +74,7 @@
                     </a>
                 </div>
             @endif
-        </div>
+        </div> --}}
     </div>
 
 
@@ -89,16 +89,16 @@
 
     <!-- Seller Info -->
     <div class="d-flex flex-wrap align-items-center">
-        <div class="d-flex align-items-center mr-4">
-            <!-- Shop Name -->
-            @if ($detailedProduct->added_by == 'seller' && get_setting('vendor_system_activation') == 1)
+        <!-- Shop Name -->
+        @if ($detailedProduct->added_by == 'seller' && get_setting('vendor_system_activation') == 1)
+            <div class="d-flex align-items-center mr-4">
                 <span class="text-secondary fs-14 fw-400 mr-4 w-80px">{{ translate('Sold by') }}</span>
                 <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}"
                     class="text-reset hov-text-primary fs-14 fw-700">{{ $detailedProduct->user->shop->name }}</a>
-            @else
-                <p class="mb-0 fs-14 fw-700">{{ translate('Inhouse product') }}</p>
-            @endif
-        </div>
+            </div>
+        {{-- @else
+            <p class="mb-0 fs-14 fw-700">{{ translate('Inhouse product') }}</p> --}}
+        @endif
         <!-- Messase to seller -->
         @if (get_setting('conversation_system') == 1)
             <div class="">
@@ -432,7 +432,7 @@
             @endif
 
             <!-- Total Price -->
-            <div class="row no-gutters pb-3 d-none" id="chosen_price_div">
+            {{-- <div class="row no-gutters pb-3 d-none" id="chosen_price_div">
                 <div class="col-sm-2">
                     <div class="text-secondary fs-14 fw-400 mt-1">{{ translate('Total Price') }}</div>
                 </div>
@@ -443,7 +443,7 @@
                         </strong>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         </form>
     @endif
@@ -483,13 +483,13 @@
                     </a>
                 @else
                     <button type="button"
-                        class="btn btn-secondary-base mr-2 add-to-cart fw-600 min-w-150px rounded-0 text-white"
+                        style="font-size: 1.3em !important;" class="btn btn-dark mr-2 add-to-cart fw-600 min-w-150px rounded-0 text-white btn-block"
                         @if (Auth::check() || get_Setting('guest_checkout_activation') == 1) onclick="addToCart()" @else onclick="showLoginModal()" @endif>
-                        <i class="las la-shopping-bag"></i> {{ translate('Add to cart') }}
+                        <i class="las la-shopping-bag"></i> {{ translate('কার্টে যোগ করুন') }}
                     </button>
-                    <button type="button" class="btn btn-primary buy-now fw-600 add-to-cart min-w-150px rounded-0"
+                    <button type="button"   style="font-size: 1.3em !important;" class="btn btn-primary buy-now fw-600 add-to-cart min-w-150px rounded-0 btn-block"
                         @if (Auth::check() || get_Setting('guest_checkout_activation') == 1) onclick="addToCart()" @else onclick="showLoginModal()" @endif>
-                        <i class="la la-shopping-cart"></i> {{ translate('Buy Now') }}
+                        <i class="la la-shopping-cart"></i> {{ translate('ক্যাশ অন ডেলিভারিতে অর্ডার করুন') }}
                     </button>
                 @endif
                 <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
@@ -497,15 +497,21 @@
                 </button>
             @elseif ($detailedProduct->digital == 1)
                 <button type="button"
-                    class="btn btn-secondary-base mr-2 add-to-cart fw-600 min-w-150px rounded-0 text-white"
+                    style="font-size: 1.3em !important;" class="btn btn-secondary-base mr-2 add-to-cart fw-600 min-w-150px rounded-0 text-white btn-block"
                     @if (Auth::check() || get_Setting('guest_checkout_activation') == 1) onclick="addToCart()" @else onclick="showLoginModal()" @endif>
-                    <i class="las la-shopping-bag"></i> {{ translate('Add to cart') }}
+                    <i class="las la-shopping-bag"></i> {{ translate('কার্টে যোগ করুন') }}
                 </button>
-                <button type="button" class="btn btn-primary buy-now fw-600 add-to-cart min-w-150px rounded-0"
+                <button type="button" class="btn btn-primary buy-now fw-600 add-to-cart min-w-150px rounded-0 btn-block"
                     @if (Auth::check() || get_Setting('guest_checkout_activation') == 1) onclick="addToCart()" @else onclick="showLoginModal()" @endif>
-                    <i class="la la-shopping-cart"></i> {{ translate('Buy Now') }}
+                    <i class="la la-shopping-cart"></i> {{ translate('ক্যাশ অন ডেলিভারিতে অর্ডার করুন') }}
                 </button>
             @endif
+            <a href="tel:{{get_setting('contact_phone')}}" class="mt-2 d-block">
+                <button type="button"   style="font-size: 1.3em !important;" class="btn btn-secondary-base buy-now fw-600 add-to-cart min-w-150px rounded-0 btn-block text-white">
+                    <i class="las la-phone"></i> {{ translate('বিস্তারিত জানতে কল করুন') }}
+                </button>
+            </a>
+
         </div>
 
         <!-- Promote Link -->
@@ -582,12 +588,12 @@
     @endif
 
     <!-- Share -->
-    <div class="row no-gutters mt-4">
+    {{-- <div class="row no-gutters mt-4">
         <div class="col-sm-2">
             <div class="text-secondary fs-14 fw-400 mt-2">{{ translate('Share') }}</div>
         </div>
         <div class="col-sm-10">
             <div class="aiz-share"></div>
         </div>
-    </div>
+    </div> --}}
 </div>

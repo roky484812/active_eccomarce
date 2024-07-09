@@ -3,7 +3,6 @@
         @csrf
         <input type="hidden" name="total_shipping_cost"/>
         <input type="hidden" name="shipping_type_9" value="home_delivery"/>
-        <input type="hidden" name="additional_info" value=""/>
         <input type="hidden" name="payment_option" value="cash_on_delivery"/>
         <input type="hidden" name="country_code" value="88"/>
 
@@ -139,8 +138,16 @@
                 </div>
             </li>
         </ul>
+        <div class="mt-2 h6">
+            <label for="order_note" style="font-size: .95em;" class="font-weight-bold">
+                অর্ডার নোট
+            </label>
+            <div class="input-group mb-2">
+                <input type="text" class="form-control" id="order_note" name="additional_info" placeholder="অর্ডার নোট">
+            </div>
+        </div>
         <!-- total amount -->
-        <button class="btn btn-warning btn-lg btn-block">আপনার অর্ডার কনফার্ম করতে ক্লিক করুন</button>
+        <button class="btn btn-warning btn-lg btn-block mt-3">আপনার অর্ডার কনফার্ম করতে ক্লিক করুন</button>
         <h5 class="text-center text-success mt-3">উপরের বাটনে ক্লিক করলে আপনার অর্ডারটি সাথে সাথে কনফার্ম হয়ে যাবে !</h5>
     </form>
 </div>

@@ -67,22 +67,49 @@
 
                     <!-- Product Details -->
                     <div class="col-xl-7 col-lg-6">
+
                         @include('frontend.product_details.details')
+                        <div class="accordion" id="accordionExample2">
+                            <div class="card">
+                                <div class="card-header d-block" id="headingTwo">
+                                    <button class="btn btn-block text-left collapsed p-0" type="button" data-toggle="collapse" data-target="#description_accordion" aria-expanded="false" aria-controls="description_accordion">
+                                        <h5 class="fs-16 fw-700 mb-0">{{ translate('Description') }}</h5>
+                                    </button>
+                                </div>
+                                <div id="description_accordion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <!-- Description, Video, Downloads -->
+                                    @include('frontend.product_details.description')
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    <div class="row mb-3 bg-soft-secondary py-3">
+        <div class="col-sm-12 col-lg-4 text-center my-4">
+            <h4>নিরাপদ পেমেন্ট</h4>
+            <h6>বিভিন্ন পেমেন্ট পদ্ধতি থেকে বেছে নিন</h6>
+        </div>
+        <div class="col-sm-12 col-lg-4 text-center my-4">
+            <h4>গ্রিন ডেলিভারি</h4>
+            <h6>৩-৫ দিনের মধ্যে আপনার পণ্য পৌছে যাবে</h6>
+        </div>
+        <div class="col-sm-12 col-lg-4 text-center my-4">
+            <h4>১০০% ন্যাচারাল</h4>
+            <h6>প্রাকৃতিক উপাদান ব্যবহার করতে আমরা প্রতিশ্রুতিবদ্ধ</h6>
+        </div>
+    </div>
     <section class="mb-4">
         <div class="container">
             @if ($detailedProduct->auction_product)
                 <!-- Reviews & Ratings -->
                 @include('frontend.product_details.review_section')
-                
+
                 <!-- Description, Video, Downloads -->
                 @include('frontend.product_details.description')
-                
+
                 <!-- Product Query -->
                 @include('frontend.product_details.product_queries')
             @else
@@ -100,19 +127,31 @@
 
                     <!-- Right side -->
                     <div class="col-lg-9">
-                        
-                        <!-- Reviews & Ratings -->
-                        @include('frontend.product_details.review_section')
 
-                        <!-- Description, Video, Downloads -->
-                        @include('frontend.product_details.description')
-                        
+                        {{-- according --}}
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-header d-block" id="headingOne">
+                                    <button class="btn btn-block text-left collapsed p-0" type="button" data-toggle="collapse" data-target="#review_accordion" aria-expanded="false" aria-controls="review_accordion">
+                                        <h5 class="fs-16 fw-700 mb-0">{{ translate('Reviews & Ratings') }}</h5>
+                                    </button>
+                                </div>
+                                <div id="review_accordion" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <!-- Reviews & Ratings -->
+                                    @include('frontend.product_details.review_section')
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
                         <!-- Frequently Bought products -->
                         @include('frontend.product_details.frequently_bought_products')
 
                         <!-- Product Query -->
                         @include('frontend.product_details.product_queries')
-                        
+
                         <!-- Top Selling Products -->
                         <div class="d-lg-none">
                              @include('frontend.product_details.top_selling_products')
@@ -204,9 +243,9 @@
 
     <!-- Bid Modal -->
     @if($detailedProduct->auction_product == 1)
-        @php 
+        @php
             $highest_bid = $detailedProduct->bids->max('amount');
-            $min_bid_amount = $highest_bid != null ? $highest_bid+1 : $detailedProduct->starting_bid; 
+            $min_bid_amount = $highest_bid != null ? $highest_bid+1 : $detailedProduct->starting_bid;
         @endphp
         <div class="modal fade" id="bid_for_detail_product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -238,7 +277,7 @@
             </div>
         </div>
     @endif
-    
+
     <!-- Product Review Modal -->
     <div class="modal fade" id="product-review-modal">
         <div class="modal-dialog">
